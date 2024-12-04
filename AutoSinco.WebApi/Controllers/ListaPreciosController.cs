@@ -10,7 +10,8 @@ namespace AutoSinco.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ServiceFilter(typeof(LogAttribute))]
-    [ServiceFilter(typeof(AutorizacionJwtAttribute))]
+
+    //[ServiceFilter(typeof(AutorizacionJwtAttribute))]
     public class ListaPreciosController : ControllerBase
     {
         private readonly IListaPreciosRepository _listaPreciosRepository;

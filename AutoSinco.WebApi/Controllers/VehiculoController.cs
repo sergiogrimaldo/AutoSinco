@@ -10,7 +10,8 @@ namespace AutoSinco.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ServiceFilter(typeof(LogAttribute))]
-    [ServiceFilter(typeof(AutorizacionJwtAttribute))]
+    //TOKEN
+    //[ServiceFilter(typeof(AutorizacionJwtAttribute))]
     public class VehiculoController : ControllerBase
     {
         private readonly IVehiculoRepository _vehiculoRepository;

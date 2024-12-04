@@ -15,6 +15,7 @@ using AutoSinco.Shared.InDTO;
 using AutoSinco.WebApi.Attributes;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using PortalEmpleo.Domain.Services;
 using System.Text;
@@ -26,18 +27,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configuración de CORS
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowAll",
-        builder =>
-        {
-            builder
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-        });
-});
 
 // Configuración de la base de datos
 builder.Services.AddDbContext<DBContext>(options =>
@@ -95,6 +84,21 @@ builder.Services.AddControllers(options =>
     options.Filters.AddService<LogAttribute>();
 });
 
+
+//Configuracion Front
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder
+            .SetIsOriginAllowed(origin => true) // Para desarrollo
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
+    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -103,6 +107,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 // Middleware pipeline
 app.UseHttpsRedirection();

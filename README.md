@@ -2,6 +2,12 @@
 
 Este es el backend del sistema de administración de vehículos para un concesionario, desarrollado en **C# con .NET Core** y usando **SQL Server** para almacenamiento de datos.
 
+## Tecnologías utilizadas
+- C#
+- .NET Core
+- SQL Server
+- Entity Framework Core
+
 ## Requisitos previos
 
 - .NET Core SDK (versión mínima: 6.0)
